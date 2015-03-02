@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block nav %}
+    <li role="presentation"><a href="/home">Home</a></li>
+    <li role="presentation"><a href="/about">About</a></li>
+    <li role="presentation"><a href="/contact">Contact</a></li>
+{% endblock %}
+
+{% block content %}
+    <h3>Search Results</h3>
+    <p>Here's what we found on Wikipedia. Click on any of them to start visualization.</p>
+    {% if links %}
+        <ul>
+            {% for link in links %}
+                <li><a href={{ "/visualization/" + link }}>{{ link }}</a></li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No results were found. Click <a href="/home">here</a> to return to the home page.</p>
+
+    {% endif %}
+
+    <h3>You searched for:</h3>
+
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul>
+                {% for message in messages %}
+                    <li>{{ message }} </li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+{% endblock %}

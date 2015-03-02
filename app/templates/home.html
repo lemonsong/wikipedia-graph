@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block nav %}
+    <li role="presentation" class="active"><a href="/home">Home</a></li>
+    <li role="presentation"><a href="/about">About</a></li>
+    <li role="presentation"><a href="/contact">Contact</a></li>
+{% endblock %}
+
+{% block content %}
+    <form action="/" method="post" name="search">
+    {{ form.hidden_tag() }} <!-- CSRF stuff -->
+        <div class="form-group">
+            <label for="exampleInputEmail1">What do you want to know about?</label>
+            {{ form.search_term(class="form-control",placeholder="Enter the title of a Wikipedia article (e.g., statistics)") }}
+        </div>
+    </form>
+{% endblock %}
